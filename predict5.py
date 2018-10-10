@@ -22,7 +22,7 @@ N_DATA = count_data()
 nSteps = BATCH_SIZE * N_EPOCHS
 #text_file = open("./data/label.txt", "r")
 #lines  = text_file.readlines()
-nClass = 10#len(lines)
+nClass = 10
 
 
 
