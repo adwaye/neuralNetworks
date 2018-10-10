@@ -1,4 +1,18 @@
 import tensorflow as tf
+from utils import del_all_flags
+
+#del_all_flags(tf.flags.FLAGS)
+#"""
+tf.app.flags.DEFINE_integer('kernel_size_1',5,
+                           'Size of first convolutional kernel')
+tf.app.flags.DEFINE_integer('kernel_size_2',5,
+                           'Size of second convolutional kernel')
+tf.app.flags.DEFINE_integer('kernel_size_3',3,
+                           'Size of third convolutional kernel')
+tf.app.flags.DEFINE_integer('kernel_size_4',3,
+                           'Size of fourth convolutional kernel')
+FLAGS = tf.app.flags.FLAGS
+#"""
 
 
 def conv_layer(inputs
@@ -45,10 +59,10 @@ def full_layer(inputs,units,activation,name):
 
 
 """
-CONV_RELU_48-MAX_POOL
-CONV_RELU_64-MAX_POOL
-CONV_RELU_128-MAX_POOL
-FC_SOFTMAX_128
+CONV_RELU_48-MAX_POOL\n\
+CONV_RELU_64-MAX_POOL\n\
+CONV_RELU_128-MAX_POOL\n\
+FC_SOFTMAX_128\n\
 FL_SOFTMAX_nCLASS
 """
 def adnet_1(inputs
@@ -57,12 +71,10 @@ def adnet_1(inputs
            ,drop_prob=0.5
            ,imSize = [17,17]
            ,batch_norm = False
-           ,kernel_size1 = [3,3]
-           ,kernel_size2 = [3,3]
-           ,kernel_size3 = [3,3]
            ):
-#    tf.reset_default_graph()
-#    inputs = tf.placeholder(tf.float32,[100,17 * 17])
+    kernel_size1 = FLAGS.kernel_size_1
+    kernel_size2 = FLAGS.kernel_size_2
+    kernel_size3 = FLAGS.kernel_size_3
     nets =  tf.reshape(inputs,[-1,imSize[0],imSize[1],1],name='Reshape_op')
     if batch_norm:
         nets = tf.layers.batch_normalization(nets,training=is_training)
@@ -88,10 +100,10 @@ def adnet_1(inputs
 
 
 """
-CONV_RELU_32-CONV_RELU_32-MAX_POOL
-CONV_RELU_64-CONV_RELU_64-MAX_POOL
-CONV_RELU_128-CONV_RELU_128-CONV_RELU_128-MAX_POOL
-FC_SOFTMAX_128
+CONV_RELU_32-CONV_RELU_32-MAX_POOL\n\
+CONV_RELU_64-CONV_RELU_64-MAX_POOL\n\
+CONV_RELU_128-CONV_RELU_128-CONV_RELU_128-MAX_POOL\n\
+FC_SOFTMAX_128\n\
 FL_SOFTMAX_nCLASS
 """
 
@@ -101,12 +113,10 @@ def adnet_2(inputs
            ,drop_prob=0.5
            ,imSize = [23,23]
            ,batch_norm = False
-           ,kernel_size1=[3,3]
-           ,kernel_size2=[3,3]
-           ,kernel_size3=[3,3]
            ):
-#    tf.reset_default_graph()
-#    inputs = tf.placeholder(tf.float32,[100,17 * 17])
+    kernel_size1 = FLAGS.kernel_size_1
+    kernel_size2 = FLAGS.kernel_size_2
+    kernel_size3 = FLAGS.kernel_size_3
     nets =  tf.reshape(inputs,[-1,imSize[0],imSize[1],1],name='Reshape_op')
     #conv layers
     if batch_norm:
@@ -151,12 +161,10 @@ def adnet_3(inputs
            ,drop_prob=0.5
            ,imSize = [17,17]
            ,batch_norm = False
-           ,kernel_size1 = [3,3]
-           ,kernel_size2 = [3,3]
-           ,kernel_size3 = [3,3]
            ):
-#    tf.reset_default_graph()
-#    inputs = tf.placeholder(tf.float32,[100,17 * 17])
+    kernel_size1 = FLAGS.kernel_size_1
+    kernel_size2 = FLAGS.kernel_size_2
+    kernel_size3 = FLAGS.kernel_size_3
     nets =  tf.reshape(inputs,[-1,imSize[0],imSize[1],1],name='Reshape_op')
     if batch_norm:
         nets = tf.layers.batch_normalization(nets,training=is_training)
@@ -194,12 +202,9 @@ def adnet_4(inputs
            ,drop_prob=0.5
            ,imSize = [17,17]
            ,batch_norm = False
-           ,kernel_size1 = [3,3]
-           ,kernel_size2 = [3,3]
-           ,kernel_size3 = [3,3]
            ):
-#    tf.reset_default_graph()
-#    inputs = tf.placeholder(tf.float32,[100,17 * 17])
+    kernel_size1 = FLAGS.kernel_size_1
+    kernel_size2 = FLAGS.kernel_size_2
     nets =  tf.reshape(inputs,[-1,imSize[0],imSize[1],1],name='Reshape_op')
     if batch_norm:
         nets = tf.layers.batch_normalization(nets,training=is_training)
@@ -236,12 +241,9 @@ def adnet_5(inputs
            ,drop_prob=0.5
            ,imSize = [17,17]
            ,batch_norm = False
-           ,kernel_size1 = [3,3]
-           ,kernel_size2 = [3,3]
-           ,kernel_size3 = [3,3]
            ):
-#    tf.reset_default_graph()
-#    inputs = tf.placeholder(tf.float32,[100,17 * 17])
+    kernel_size1 = FLAGS.kernel_size_1
+    kernel_size2 = FLAGS.kernel_size_2
     nets =  tf.reshape(inputs,[-1,imSize[0],imSize[1],1],name='Reshape_op')
     if batch_norm:
         nets = tf.layers.batch_normalization(nets,training=is_training)
@@ -277,13 +279,11 @@ def adnet_6(inputs
            ,drop_prob=0.5
            ,imSize = [17,17]
            ,batch_norm = False
-           ,kernel_size1 = [3,3]
-           ,kernel_size2 = [3,3]
-           ,kernel_size3 = [3,3]
-           ,kernel_size4 = [3,3]
            ):
-#    tf.reset_default_graph()
-#    inputs = tf.placeholder(tf.float32,[100,17 * 17])
+    kernel_size1 = FLAGS.kernel_size_1
+    kernel_size2 = FLAGS.kernel_size_2
+    kernel_size3 = FLAGS.kernel_size_3
+    kernel_size4 = FLAGS.kernel_size_4
     nets =  tf.reshape(inputs,[-1,imSize[0],imSize[1],1],name='Reshape_op')
     if batch_norm:
         nets = tf.layers.batch_normalization(nets,training=is_training)
@@ -327,13 +327,11 @@ def adnet_7(inputs
            ,drop_prob=0.5
            ,imSize = [17,17]
            ,batch_norm = False
-           ,kernel_size1 = [3,3]
-           ,kernel_size2 = [3,3]
-           ,kernel_size3 = [3,3]
-           ,kernel_size4 = [3,3]
            ):
-#    tf.reset_default_graph()
-#    inputs = tf.placeholder(tf.float32,[100,17 * 17])
+    kernel_size1 = FLAGS.kernel_size_1
+    kernel_size2 = FLAGS.kernel_size_2
+    kernel_size3 = FLAGS.kernel_size_3
+    kernel_size4 = FLAGS.kernel_size_4
     nets =  tf.reshape(inputs,[-1,imSize[0],imSize[1],1],name='Reshape_op')
     if batch_norm:
         nets = tf.layers.batch_normalization(nets,training=is_training)
@@ -377,12 +375,10 @@ def adnet_8(inputs
            ,drop_prob=0.5
            ,imSize = [23,23]
            ,batch_norm = False
-           ,kernel_size1=[3,3]
-           ,kernel_size2=[3,3]
-           ,kernel_size3=[3,3]
            ):
-#    tf.reset_default_graph()
-#    inputs = tf.placeholder(tf.float32,[100,17 * 17])
+    kernel_size1 = FLAGS.kernel_size_1
+    kernel_size2 = FLAGS.kernel_size_2
+    kernel_size3 = FLAGS.kernel_size_3
     nets =  tf.reshape(inputs,[-1,imSize[0],imSize[1],1],name='Reshape_op')
     #conv layers
     if batch_norm:
@@ -411,3 +407,67 @@ def adnet_8(inputs
     nets = full_layer(nets,units=num_classes,activation=None,name='logits')
     nets = tf.reshape(nets,[-1,num_classes])
     return nets
+
+
+
+
+model_library = {
+     '1' :adnet_1
+    ,'2' :adnet_2
+    ,'3' :adnet_3
+    ,'4' :adnet_4
+    ,'5' :adnet_5
+    ,'6' :adnet_6
+    ,'7' :adnet_7
+    ,'8' :adnet_8
+}
+
+architecture_library = {
+    '1' : 'CONV_RELU_48-MAX_POOL\n\
+CONV_RELU_64-MAX_POOL\n\
+CONV_RELU_128-MAX_POOL\n\
+FC_SOFTMAX_128'
+
+    ,'2': 'CONV_RELU_32-CONV_RELU_32-MAX_POOL\n\
+CONV_RELU_64-CONV_RELU_64-MAX_POOL\n\
+CONV_RELU_128-CONV_RELU_128-CONV_RELU_128-MAX_POOL\n\
+FC_SOFTMAX_128\n\
+FL_SOFTMAX_nCLASS'
+
+    ,'3': 'CONV_RELU_20-MAX_POOL\n\
+CONV_RELU_40-MAX_POOL\n\
+CONV_RELU_80-MAX_POOL\n\
+FC_SOFTMAX_80\n\
+FL_SOFTMAX_nCLASS'
+
+    ,'4': 'CONV_RELU_32-CONV_RELU_32-MAX_POOL\n\
+CONV_RELU_64-CONV_RELU_64-MAX_POOL\n\
+FC_SOFTMAX_64\n\
+FL_SOFTMAX_nCLASS'
+
+    ,'5':'CONV_RELU_32-MAX_POOL\n\
+CONV_RELU_64-MAX_POOL\n\
+FC_SOFTMAX_128\n\
+FL_SOFTMAX_nCLASS'
+
+    ,'6':'CONV_SPLUS_32-MAX_POOL\n\
+CONV_SPLUS_64-MAX_POOL\n\
+CONV_SPLUS_128-MAX_POOL\n\
+CONV_SPLUS_256-MAX_POOL\n\
+FC_SPLUS_256\n\
+FL_SPLUS_nCLASS'
+
+
+    ,'7': 'CONV_RELU_32-MAX_POOL\n\
+CONV_RELU_64-MAX_POOL\n\
+CONV_RELU_128-MAX_POOL\n\
+CONV_RELU_256-MAX_POOL\n\
+FC_RELU_256\n\
+FL_SOFTMAX_nCLASS'
+
+    ,'8': 'CONV_RELU_32-CONV_RELU_32-AVG_POOL\n\
+CONV_RELU_64-CONV_RELU_64-AVG_POOL\n\
+CONV_RELU_128-CONV_RELU_128-CONV_RELU_128-AVG_POOL\n\
+FC_SOFTMAX_128\n\
+FL_SOFTMAX_nCLASS'
+}

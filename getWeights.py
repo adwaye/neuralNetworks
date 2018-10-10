@@ -1,13 +1,11 @@
-import numpy as np
+
 import tensorflow as tf
-import os
-import cv2
+
+
 slim = tf.contrib.slim
 import tensorflow.contrib.slim.nets as nets
 import sys
 sys.path.append('/home/amr62/Documents/TheEffingPhDHatersGonnaHate/discriminativeModel/')
-from checkTfrecords import check_size,count_data
-from tensorflow.contrib.framework import assign_from_checkpoint_fn
 import matplotlib.pyplot as plt
 plt.ion()
 import scipy.io as sio

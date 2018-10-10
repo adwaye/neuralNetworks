@@ -3,6 +3,12 @@ import numpy as np
 import os
 import tensorflow as tf
 
+def del_all_flags(FLAGS):
+    flags_dict = FLAGS._flags()
+    keys_list = [keys for keys in flags_dict]
+    for keys in keys_list:
+        FLAGS.__delattr__(keys)
+
 
 def update_dir(nameInit):
  output_directory = nameInit
